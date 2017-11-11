@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Totito</string>
+
+    <string name="un_jugador">1 Jugador</string>
+    <string name="dos_jugadores">2 Jugadores</string>
+    <string name="facil">Fácil</string>
+    <string name="normal">Normal</string>
+    <string name="dificil">Difícil</string>
+    <string name="casilla">Casilla</string>
+    <string name="circulos_ganan">¡Los circulos ganan!</string>
+    <string name="equis_ganan">¡Las equis ganan!</string>
+    <string name="empate">¡Empate!</string>
+</resources>

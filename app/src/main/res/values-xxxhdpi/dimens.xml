@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!--
     <dimen name="padding_pantalla">24dp</dimen>
     <dimen name="casilla">160dp</dimen>
     <dimen name="texto_titulo">48sp</dimen>
@@ -10,4 +11,5 @@
     <dimen name="radio_boton">12dp</dimen>
     <dimen name="padding_boton">12dp</dimen>
     <dimen name="texto_radio">24sp</dimen>
+    -->
 </resources>
