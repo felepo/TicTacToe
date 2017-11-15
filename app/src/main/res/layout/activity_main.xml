@@ -32,23 +32,24 @@
             style="@style/boton"/>
 
         <RadioGroup
+            android:id="@+id/grupoDificultad"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
             <RadioButton
                 android:id="@+id/facil"
-                android:text="@string/facil"
-                style="@style/radio_boton"/>
+                style="@style/radio_boton"
+                android:text="@string/facil" />
 
             <RadioButton
                 android:id="@+id/normal"
-                android:text="@string/normal"
-                style="@style/radio_boton"/>
+                style="@style/radio_boton"
+                android:text="@string/normal" />
 
             <RadioButton
                 android:id="@+id/dificil"
-                android:text="@string/dificil"
-                style="@style/radio_boton"/>
+                style="@style/radio_boton"
+                android:text="@string/dificil" />
 
         </RadioGroup>
 
