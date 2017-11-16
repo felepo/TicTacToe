@@ -1,11 +1,14 @@
 package com.felepo.tic_tac_toe;
 
 import android.app.Activity;
+import android.media.Image;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 public class MainActivity extends Activity {
 
@@ -81,5 +84,57 @@ public class MainActivity extends Activity {
         ((Button) findViewById(R.id.unJugador)).setEnabled(false);
         ((RadioGroup) findViewById(R.id.grupoDificultad)).setAlpha(0);
         ((Button) findViewById(R.id.dosJugadores)).setEnabled(false);
+    }
+
+    public void toque(View casillaPresionada)
+    {
+        if( partida == null )
+        {
+            return;
+        }
+
+        int casilla = 0;
+
+        for( int i = 0; i < 9; i++ )
+        {
+            if( CASILLAS[i] == casillaPresionada.getId() )
+            {
+                casilla = i;
+
+                break;
+            }
+        }
+
+        //Código para mostrar texto en la pantalla del movil.
+        /*
+        Toast toast = Toast.makeText(this, "Casilla " + casilla + " pulsada",
+                Toast.LENGTH_SHORT);
+        toast.setGravity(Gravity.CENTER, 0, 0);
+        toast.show();
+        */
+
+        //Se dibuja en la casilla seleccionada el simbolo del jugador 1
+        marcarCasilla(casilla);
+
+        //Se dibuja en la casilla seleccionada el simbolo del jugador 2
+        casilla = partida.inteligenciaArtificial();
+        partida.cambiarTurno();
+        marcarCasilla(casilla);
+        partida.cambiarTurno();
+    }
+
+    private void marcarCasilla(int casilla)
+    {
+        ImageView imagen;
+        imagen = (ImageView) findViewById(CASILLAS[casilla]);
+
+        if( partida.jugador == 1 )
+        {
+            imagen.setImageResource(R.drawable.circulo);
+        }
+        else
+        {
+            imagen.setImageResource(R.drawable.equis);
+        }
     }
 }
