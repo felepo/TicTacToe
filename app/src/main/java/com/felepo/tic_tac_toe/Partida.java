@@ -10,11 +10,32 @@ public class Partida
 {
     public final int dificultad;
     public int jugador;
+    private int casillasOcupadas[];
 
     public Partida(int dificultad)
     {
         this.dificultad = dificultad;
         jugador = 1;
+
+        casillasOcupadas = new int[9];
+        for( int i = 0; i < 9; i++ )
+        {
+            casillasOcupadas[i] = 0;
+        }
+    }
+
+    public boolean comprobarCasilla(int numeroCasilla)
+    {
+        if( casillasOcupadas[numeroCasilla] != 0 )
+        {
+            return false;
+        }
+        else
+        {
+            casillasOcupadas[numeroCasilla] = jugador;
+        }
+
+        return true;
     }
 
     public void cambiarTurno()

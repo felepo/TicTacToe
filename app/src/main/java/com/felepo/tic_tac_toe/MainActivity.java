@@ -88,6 +88,7 @@ public class MainActivity extends Activity {
 
     public void toque(View casillaPresionada)
     {
+        //Se verifica si la partida está iniciada
         if( partida == null )
         {
             return;
@@ -113,11 +114,22 @@ public class MainActivity extends Activity {
         toast.show();
         */
 
+        if( partida.comprobarCasilla(casilla) == false )
+        {
+            return;
+        }
+
         //Se dibuja en la casilla seleccionada el simbolo del jugador 1
         marcarCasilla(casilla);
 
         //Se dibuja en la casilla seleccionada el simbolo del jugador 2
         casilla = partida.inteligenciaArtificial();
+
+        while( partida.comprobarCasilla(casilla) != true )
+        {
+            casilla = partida.inteligenciaArtificial();
+        }
+
         partida.cambiarTurno();
         marcarCasilla(casilla);
         partida.cambiarTurno();
