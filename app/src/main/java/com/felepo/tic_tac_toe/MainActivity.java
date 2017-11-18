@@ -122,6 +122,8 @@ public class MainActivity extends Activity {
         //Se dibuja en la casilla seleccionada el simbolo del jugador 1
         marcarCasilla(casilla);
 
+        partida.cambiarTurno();
+
         //Se dibuja en la casilla seleccionada el simbolo del jugador 2
         casilla = partida.inteligenciaArtificial();
 
@@ -130,7 +132,6 @@ public class MainActivity extends Activity {
             casilla = partida.inteligenciaArtificial();
         }
 
-        partida.cambiarTurno();
         marcarCasilla(casilla);
         partida.cambiarTurno();
     }

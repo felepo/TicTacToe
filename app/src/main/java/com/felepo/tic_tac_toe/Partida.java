@@ -43,6 +43,7 @@ public class Partida
     public int cambiarTurno()
     {
         boolean empate = true;
+        boolean ultimoMovimiento = true;
 
         //Verificando las combinaciones de victoria del juego
         for( int i = 0; i < COMBINACIONES.length; i++ )
@@ -51,12 +52,25 @@ public class Partida
             {
                 //System.out.println("Valor en posición " + i + " " + casillasOcupadas[pos]);
 
+                //Con esto se sabe si se ha ganado el juego o no
+                if( casillasOcupadas[pos] != jugador )
+                {
+                    ultimoMovimiento = false;
+                }
+
                 if( casillasOcupadas[pos] == 0 )
                 {
                     empate = false;
                 }
-            }
+            }   //Fin de for anidado
+        }   //Fin del for principal
+
+        if( ultimoMovimiento )
+        {
+            return jugador;
         }
+
+        ultimoMovimiento = true;
 
         if( empate )
         {
@@ -72,6 +86,34 @@ public class Partida
         }
 
         return 0;
+    }
+
+    //Método para enriquecer la inteligencia del programa
+    public int dosEnRaya(int jugadorEnTurno)
+    {
+        int casilla = -1;
+        int conteoCasilla = 0;
+
+        for( int i = 0; i < COMBINACIONES.length; i++ )
+        {
+            for( int pos : COMBINACIONES[i] )
+            {
+                if( casillasOcupadas[pos] == jugadorEnTurno )
+                {
+                    conteoCasilla++;
+                }
+            }
+
+            if( conteoCasilla == 2 && casilla != -1 )
+            {
+                return casilla;
+            }
+
+            casilla = -1;
+            conteoCasilla = 0;
+        }
+
+        return -1;
     }
 
     public int inteligenciaArtificial()
