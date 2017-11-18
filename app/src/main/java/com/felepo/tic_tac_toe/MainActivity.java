@@ -66,7 +66,7 @@ public class MainActivity extends Activity {
         int id = grupoDificultad.getCheckedRadioButtonId();
 
         int dificultad = 0;
-        if( id == R.id.normal )
+        if( id == R.id.medio )
         {
             dificultad = 1;
         }

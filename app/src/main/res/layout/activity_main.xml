@@ -42,7 +42,7 @@
                 android:text="@string/facil" />
 
             <RadioButton
-                android:id="@+id/normal"
+                android:id="@+id/medio"
                 style="@style/radio_boton"
                 android:text="@string/normal" />
 

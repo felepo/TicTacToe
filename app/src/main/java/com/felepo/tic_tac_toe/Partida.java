@@ -10,8 +10,8 @@ public class Partida
 {
     public final int dificultad;
     public int jugador;
-    private int casillasOcupadas[];
-    private final int COMBINACIONES[][] = {{0,1,2},{3,4,5},{6,7,8},
+    private int[] casillasOcupadas;
+    private final int[][] COMBINACIONES = {{0,1,2},{3,4,5},{6,7,8},
             {0,3,6},{1,4,7},{2,5,8},{0,4,8},{2,4,6}};
 
     public Partida(int dificultad)
@@ -104,7 +104,7 @@ public class Partida
                 }
             }
 
-            if( conteoCasilla == 2 && casilla != -1 )
+            if( ( conteoCasilla == 2 ) && ( casilla != -1 ) )
             {
                 return casilla;
             }
@@ -119,6 +119,32 @@ public class Partida
     public int inteligenciaArtificial()
     {
         int casilla;
+
+        //Con esto la maquina busca ganar el juego
+        casilla = dosEnRaya(2);
+        if( casilla != -1 )
+        {
+            return casilla;
+        }
+
+        if( dificultad > 0 )
+        {
+            //Con esto la maquina impide que el jugador 1 gane
+            casilla = dosEnRaya(1);
+            if( casilla != -1 )
+            {
+                return casilla;
+            }
+        }
+
+        //De esta forma, el juego se hace imposible de ganar
+        if( dificultad == 2 )
+        {
+            if( casillasOcupadas[0] == 0 ) return 0;
+            if( casillasOcupadas[2] == 0 ) return 2;
+            if( casillasOcupadas[6] == 0 ) return 6;
+            if( casillasOcupadas[8] == 0 ) return 8;
+        }
 
         Random numAleatorio = new Random();
         casilla = numAleatorio.nextInt(9);
