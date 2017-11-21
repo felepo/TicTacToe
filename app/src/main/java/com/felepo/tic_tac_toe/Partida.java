@@ -40,6 +40,9 @@ public class Partida
         return true;
     }
 
+    /* En cambiar turno se verifica si se llegó a un empate, si alguien ganó o si
+       no ha pasado nada aún.
+    */
     public int cambiarTurno()
     {
         boolean empate = true;
@@ -101,6 +104,11 @@ public class Partida
                 if( casillasOcupadas[pos] == jugadorEnTurno )
                 {
                     conteoCasilla++;
+                }
+
+                if( casillasOcupadas[pos] == 0 )
+                {
+                    casilla = pos;
                 }
             }
 

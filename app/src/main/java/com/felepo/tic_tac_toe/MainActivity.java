@@ -70,12 +70,9 @@ public class MainActivity extends Activity {
         {
             dificultad = 1;
         }
-        else
+        if (id == R.id.dificil)
         {
-            if (id == R.id.dificil)
-            {
-                dificultad = 2;
-            }
+            dificultad = 2;
         }
 
         //PASO 4: Inhabilitar los botones mientras dure la partida
@@ -96,6 +93,7 @@ public class MainActivity extends Activity {
 
         int casilla = 0;
 
+        //Para saber el número de la casilla que fue presionada
         for( int i = 0; i < 9; i++ )
         {
             if( CASILLAS[i] == casillaPresionada.getId() )
