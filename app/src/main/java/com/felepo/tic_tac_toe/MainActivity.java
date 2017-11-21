@@ -120,7 +120,13 @@ public class MainActivity extends Activity {
         //Se dibuja en la casilla seleccionada el simbolo del jugador 1
         marcarCasilla(casilla);
 
-        partida.cambiarTurno();
+        int resultado = partida.cambiarTurno();
+        if( resultado > 0 )
+        {
+            terminarJuego(resultado);
+
+            return;
+        }
 
         //Se dibuja en la casilla seleccionada el simbolo del jugador 2
         casilla = partida.inteligenciaArtificial();
@@ -131,7 +137,42 @@ public class MainActivity extends Activity {
         }
 
         marcarCasilla(casilla);
-        partida.cambiarTurno();
+        resultado = partida.cambiarTurno();
+        if( resultado > 0 )
+        {
+            terminarJuego(resultado);
+        }
+    }
+
+    private void terminarJuego(int resultado)
+    {
+        String mensaje;
+
+        if( resultado == 1 )
+        {
+            mensaje = "" + R.string.circulos_ganan;
+        }
+        else if( resultado == 2 )
+        {
+            mensaje = "" + R.string.equis_ganan;
+        }
+        else
+        {
+            mensaje = "" + R.string.empate;
+        }
+
+        //Se muestra un toast con el mensaje final
+        Toast toast = Toast.makeText(this, mensaje, Toast.LENGTH_SHORT);
+        toast.setGravity(Gravity.CENTER, 0, 0);
+        toast.show();
+
+        //Se "termina" la partida igualando su variable a null
+        partida = null;
+
+        //Se habilita y muestran los botones
+        ((Button) findViewById(R.id.unJugador)).setEnabled(true);
+        ((RadioGroup) findViewById(R.id.grupoDificultad)).setAlpha(1);
+        ((Button) findViewById(R.id.dosJugadores)).setEnabled(true);
     }
 
     private void marcarCasilla(int casilla)
