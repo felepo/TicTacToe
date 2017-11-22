@@ -66,14 +66,15 @@ public class Partida
                     empate = false;
                 }
             }   //Fin de for anidado
+
+            if( ultimoMovimiento )
+            {
+                return jugador;
+            }
+
+            ultimoMovimiento = true;
+
         }   //Fin del for principal
-
-        if( ultimoMovimiento )
-        {
-            return jugador;
-        }
-
-        ultimoMovimiento = true;
 
         if( empate )
         {

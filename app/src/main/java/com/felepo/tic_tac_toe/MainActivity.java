@@ -128,19 +128,23 @@ public class MainActivity extends Activity {
             return;
         }
 
-        //Se dibuja en la casilla seleccionada el simbolo del jugador 2
-        casilla = partida.inteligenciaArtificial();
-
-        while( partida.comprobarCasilla(casilla) != true )
+        //Se verifica si juega uno o dos jugadores
+        if( jugadores == 1 )
         {
+            //Se dibuja en la casilla seleccionada el simbolo del jugador 2
             casilla = partida.inteligenciaArtificial();
-        }
 
-        marcarCasilla(casilla);
-        resultado = partida.cambiarTurno();
-        if( resultado > 0 )
-        {
-            terminarJuego(resultado);
+            while( partida.comprobarCasilla(casilla) != true )
+            {
+                casilla = partida.inteligenciaArtificial();
+            }
+
+            marcarCasilla(casilla);
+            resultado = partida.cambiarTurno();
+            if( resultado > 0 )
+            {
+                terminarJuego(resultado);
+            }
         }
     }
 
@@ -150,15 +154,15 @@ public class MainActivity extends Activity {
 
         if( resultado == 1 )
         {
-            mensaje = "" + R.string.circulos_ganan;
+            mensaje = getString(R.string.circulos_ganan);
         }
         else if( resultado == 2 )
         {
-            mensaje = "" + R.string.equis_ganan;
+            mensaje = getString(R.string.equis_ganan);
         }
         else
         {
-            mensaje = "" + R.string.empate;
+            mensaje = getString(R.string.empate);
         }
 
         //Se muestra un toast con el mensaje final
